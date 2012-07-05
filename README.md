@@ -1,4 +1,29 @@
-current_request
-===============
+# CurrentRequest
 
-Rack middleware to make current request available to all
+Sometimes, in the coures of human events, you need to access the currently executing http request, and you
+don't always have the luxury of passing it around, especially when you're working with frameworks that manage
+the lifecycle of objects for you, or you want to include functionality from a module. That module might not have
+a clean way of getting a reference to the request object.
+
+### CurrentRequest can help
+
+CurrentRequest stores the current request in a thread local so that you can access it from anywhere inside the
+request stack.
+
+### Oooh. Thread locals, those are dangerous I hear.
+
+Not really. There are certain objects whose natural scope is the lifetime of an http request. The http request object
+itself is one such object. As long as the thread is the fundamental unit of concurrency in your server, you'll be ok.
+
+That said, you should ensure that you are in fact including this into methods that will be invoked inside the request
+stack, and not, say, like a background job (like sending email) that is fired off during the course of a request.
+
+### Example
+
+        class Foo
+          include CurrentRequest
+
+          def current_url
+            "#{current_request.protocol}://#{current_request.host}/#{current_request.path}
+          end
+        end
