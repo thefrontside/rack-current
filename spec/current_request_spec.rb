@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rack-current'
+
 describe Rack::Current::Middleware do
   describe "inside an application's middleware stack" do
     include Rack::Current

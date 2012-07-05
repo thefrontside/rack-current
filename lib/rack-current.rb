@@ -6,3 +6,5 @@ module Rack::Current
     Thread.current[:_current_request]
   end
 end
+
+require 'rack-current/railtie' if defined?(Rails)
