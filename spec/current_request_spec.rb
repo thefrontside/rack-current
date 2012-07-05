@@ -1,12 +1,11 @@
 require 'spec_helper'
-require 'current_request'
-
-describe CurrentRequest::Middleware do
+require 'rack-current'
+describe Rack::Current::Middleware do
   describe "inside an application's middleware stack" do
-    include CurrentRequest
+    include Rack::Current
     before do
       @app = mock(:app)
-      @middleware = CurrentRequest::Middleware.new(@app)
+      @middleware = Rack::Current::Middleware.new(@app)
     end
     describe "when I invoke it" do
       before do
