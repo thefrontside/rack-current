@@ -1,11 +1,11 @@
-# CurrentRequest
+# Rack::Current
 
 Sometimes, in the coures of human events, you need to access the currently executing http request, and you
 don't always have the luxury of passing it around, especially when you're working with frameworks that manage
 the lifecycle of objects for you, or you want to include functionality from a module. That module might not have
 a clean way of getting a reference to the request object.
 
-### CurrentRequest can help
+### Rack::Current can help
 
 CurrentRequest stores the current request in a thread local so that you can access it from anywhere inside the
 request stack.
@@ -21,7 +21,7 @@ stack, and not, say, like a background job (like sending email) that is fired of
 ### Example
 
         class Foo
-          include CurrentRequest
+          include Rack::Curent
 
           def current_url
             "#{current_request.protocol}://#{current_request.host}/#{current_request.path}
