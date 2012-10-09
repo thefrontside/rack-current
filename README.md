@@ -1,6 +1,6 @@
 # Rack::Current
 
-Sometimes, in the coures of human events, you need to access the currently executing http request, and you
+Sometimes, in the course of human events, you need to access the currently executing http request, and you
 don't always have the luxury of passing it around, especially when you're working with frameworks that manage
 the lifecycle of objects for you, or you want to include functionality from a module. That module might not have
 a clean way of getting a reference to the request object.
@@ -10,7 +10,7 @@ a clean way of getting a reference to the request object.
 CurrentRequest stores the current request in a thread local so that you can access it from anywhere inside the
 request stack.
 
-### Oooh. Thread locals, those are dangerous I hear.
+### Oooh. Thread locals, I hear those are dangerous.
 
 Not really. There are certain objects whose natural scope is the lifetime of an http request. The http request object
 itself is one such object. As long as the thread is the fundamental unit of concurrency in your server, you'll be ok.
