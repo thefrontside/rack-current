@@ -21,7 +21,7 @@ stack, and not, say, like a background job (like sending email) that is fired of
 ### Example
 
         class Foo
-          include Rack::Curent
+          include Rack::Current
 
           def current_url
             "#{current_request.protocol}://#{current_request.host}/#{current_request.path}
